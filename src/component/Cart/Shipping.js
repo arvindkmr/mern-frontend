@@ -6,7 +6,7 @@ import MetaData from '../layout/MetaData';
 import { Country, State } from 'country-state-city';
 import CheckoutSteps from "../Cart/CheckoutSteps";
 import { useNavigate } from 'react-router-dom';
-const Shipping = ({ history }) => {
+const Shipping = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { shippingInfo } = useSelector((state) => state.cart);

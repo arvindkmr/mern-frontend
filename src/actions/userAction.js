@@ -43,7 +43,13 @@ export const login = (email, password) => async (dispatch) => {
   try {
     dispatch({ type: LOGIN_REQUEST });
 
-    const config = { headers: { 'Content-Type': 'application/json' } };
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        mode: 'cors',
+        credentials: 'include',
+      },
+    };
 
     const { data } = await axios.post(
       `${BASE_URL}/api/v1/login`,
@@ -62,9 +68,15 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
 
-    const config = { headers: { 'Content-Type': 'application/json' } };
+    const config = { headers: { 'Content-Type': 'application/json',mode: 'cors',
+  credentials: 'include'
+ } };
 
-    const { data } = await axios.post(`${BASE_URL}/api/v1/register`, userData, config);
+    const { data } = await axios.post(
+      `${BASE_URL}/api/v1/register`,
+      userData,
+      config
+    );
     dispatch({ type: REGISTER_USER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({
@@ -104,7 +116,11 @@ export const updateProfile = (userData) => async (dispatch) => {
     const config = { headers: { 'Content-Type': 'application/json' } };
     // const config = { headers: { 'Content-Type': 'multipart/form-data' } };
 
-    const { data } = await axios.put(`${BASE_URL}/api/v1/me/update`, userData, config);
+    const { data } = await axios.put(
+      `${BASE_URL}/api/v1/me/update`,
+      userData,
+      config
+    );
 
     dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: data.success });
   } catch (error) {
@@ -144,7 +160,11 @@ export const forgotPassword = (email) => async (dispatch) => {
 
     const config = { headers: { 'Content-Type': 'application/json' } };
 
-    const { data } = await axios.post(`${BASE_URL}/api/v1/password/forgot`, email, config);
+    const { data } = await axios.post(
+      `${BASE_URL}/api/v1/password/forgot`,
+      email,
+      config
+    );
 
     dispatch({ type: FORGOT_PASSWORD_SUCCESS, payload: data.message });
   } catch (error) {
