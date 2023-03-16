@@ -68,9 +68,14 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
 
-    const config = { headers: { 'Content-Type': 'application/json',mode: 'cors',
-  credentials: 'include'
- } };
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin':
+          'https://mern-backend-dxvh.onrender.com/api/v1/register',
+        credentials: 'include',
+      },
+    };
 
     const { data } = await axios.post(
       `${BASE_URL}/api/v1/register`,
