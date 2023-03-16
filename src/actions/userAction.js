@@ -72,7 +72,7 @@ export const register = (userData) => async (dispatch) => {
       headers: {
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin':
-          'https://mern-backend-dxvh.onrender.com/api/v1/register',
+          'https://mern-backend-dxvh.onrender.com',
         credentials: 'include',
       },
     };
